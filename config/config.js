@@ -1,8 +1,9 @@
 module.exports = 
 {
     sessionSecret : 'skfkakfTkalebdrnrdpEkfdk@!#',
-    db : {
-        host:'localhost',
+
+    db : {host:'localhost',
+        port: '3306',
         user:'cliffDev',
         password:'skfk@akfTkal',
         database : 'CASDB'

@@ -80,7 +80,9 @@ exports.getCallbackASync = function (req, res, redirectURIafterSuccess) {
             /*biz 로직 : 로그인 후에, member로 리다이렉트 시킨다 */
             var bodyJson = JSON.parse(body);
             var accessToken = bodyJson.access_token;
+            var refreshToken = bodyJson.refresh_token;
             req.session.accessToken = accessToken;
+            req.session.refreshToken = refreshToken;
             res.redirect(redirectURIafterSuccess);
 
         } else {
