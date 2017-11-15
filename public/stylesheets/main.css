@@ -1,0 +1,75 @@
+body {
+  padding-top: 5rem;
+}
+#calendar{
+  width : 100%;
+}
+
+#calendar ul
+{
+  list-style : none;
+  padding :0;
+  margin : 0;
+  width: 100%;
+  min-width: 700px;
+  max-width : 1024px;
+
+}
+
+#calendar li{
+  display : block;
+  float :left;
+  width : 10%;
+  padding: 5px;
+  box-sizing:  border-box;
+  border : 1px solid #ccc;
+  margin-right: -1px;
+  margin-bottom  : -1px;
+}
+
+#calendar .lesson{
+  text-align: center;
+  margin-bottom:1px;
+  padding : 4px;
+  background : #333;
+  color : #fff;
+  width: 35px;
+  border-radius:  30%;
+  float: left;
+}
+#calendar .lesson.crossed{
+  background : #f50;
+}
+
+#calendar .lesson.old{
+  background : #ccc;
+}
+
+
+#calendar .lesson{
+  text-align: center;
+  margin-bottom:1px;
+  padding : 4px;
+  float: left;
+}
+
+@media(max-width:768px){
+
+  #calendar ul{
+    float: left;
+    min-width: 0;
+    font-size : 0.9em;
+  }
+
+  #calendar ul.row02 {
+    float: left;
+    min-width: 0;
+    font-size : 0.9em;
+    margin-top : 10px;
+  }
+  
+  #calendar li{
+    width : 20%;
+  }
+
+}

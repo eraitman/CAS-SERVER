@@ -1,0 +1,57 @@
+extends layout
+
+block css
+  link(rel='stylesheet', href='/stylesheets/main.css')
+  script(src="/javascripts/jquery-3.2.1.min.js")
+
+block content
+  nav.navbar.navbar-expand-md.navbar-dark.bg-dark.fixed-top
+    a.navbar-brand(href='#') 벼랑영어 교차수강 시스템
+    button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarsExampleDefault', aria-controls='navbarsExampleDefault', aria-expanded='false', aria-label='Toggle navigation')
+      span.navbar-toggler-icon
+    #navbarsExampleDefault.collapse.navbar-collapse
+      ul.navbar-nav.mr-auto
+        li.nav-item.active
+          a.nav-link(href='#')
+            | #{user.STUDENT_NAME} 님,반갑습니다.                 
+      form.form-inline.my-2.my-lg-0      
+        button.btn.btn-outline-success.my-2.my-sm-0(type='submit',href='/logout') Logout
+  #container
+    div.now
+      h1 내 시간표
+      #calendar
+        ul.weekdays.row01
+          li.lessons
+            .lesson A1
+            .date 10/31(수)
+            form.form-inline.my-2.my-lg-0(action='/main/req', method='POST')
+              input(type="hidden", name="lessonNumber", value="A11")
+              button.btn.btn-outline-success.my-2.my-sm-0(type='submit') 취소신청
+          li.lessons
+            .lesson A2
+            .date 10/31(수)
+          li.lessons
+            .lesson A3
+            .date 10/31(수)
+          li.lessons
+            .lesson A4
+            .date 10/31(수)
+          li.lessons
+            .lesson A5
+            .date 10/31(수)
+        ul.weekdays.row02
+          li.lessons
+            .lesson A6
+            .date 10/31(수)
+          li.lessons
+            .lesson A7
+            .date 10/31(수)
+          li.lessons
+            .lesson A8
+            .date 10/31(수)
+          li.lessons
+            .lesson A9
+            .date 10/31(수)
+          li.lessons
+            .lesson A10
+            .date 10/31(수)

@@ -9,13 +9,7 @@ var DbDriver = require('mysql');
 const factory = {
     create: function () {
         return new Promise(function (resolve, reject) {
-            var client = DbDriver.createConnection({
-                host: 'localhost',
-                port: '3306',
-                user: 'cliffDev',
-                password: 'skfk@akfTkal',
-                database: 'CASDB'
-            });
+            var client = DbDriver.createConnection(con.db);
             client.connect(function (err) {
                 if (err) {
                     console.log(err);

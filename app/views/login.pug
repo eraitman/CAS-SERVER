@@ -2,17 +2,39 @@ extends layout
 
 block css
   link(rel='stylesheet', href='/stylesheets/login.css')
+  script(src="/javascripts/jquery-3.2.1.min.js")
 
 block content
   .container
-    form.form-signin(action='/login' method='post')
+    
+    form.form-signin(method = 'POST', action="/login")
       h2.form-signin-heading Please sign in
-      label.sr-only(for='inputEmail') Email address
-      input#inputEmail.form-control(type='text', name="name", placeholder='name', required='', autofocus='')
+      label.sr-only(for='username') 
+      input#inputEmail.form-control(type='text', name="username", placeholder='name', required='', autofocus='')
       label.sr-only(for='inputPassword') Password
-      input#inputPassword.form-control(type='password', name="phone4", placeholder='고유번호 4자리', required='')
+      input#inputPassword.form-control(type='password', name="password", placeholder='고유번호 4자리', required='')
+      -if(message > 0)
+        .alert.alert-danger #{message}
       .checkbox
         label
-          input(type='checkbox', value='remember-me')
+          input(type='checkbox', name='remember' value='remember-me')
           |  Remember me
-      button.btn.btn-lg.btn-primary.btn-block(type='submit') Sign in
+      button.btn.btn-lg.btn-primary.btn-block(type="submit") Sign in
+     
+  //- script.
+  //-   $('#login').click(function(){
+  //-     $('#message').html('');
+  //-     $.ajax({
+  //-       url:'/login',
+  //-       dataType:'json',
+  //-       type:'POST',
+  //-       data:{'name':$('#inputEmail').val(), 'phone4':$('#inputPassword').val()},
+  //-       success:function(result){
+  //-         if(result['result'] ==true)
+  //-         {
+  //-           $('#message').html(result['msg']);
+  //-           window.location.href = '/main'
+  //-         }
+  //-       }
+  //-     });
+  //-   })

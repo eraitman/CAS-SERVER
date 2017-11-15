@@ -6,8 +6,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var config = require('./config');
-
-
+var passport = require('passport');
+var flash = require('connect-flash');
 module.exports = function () {
     var app = express();
 
@@ -18,7 +18,7 @@ module.exports = function () {
 
     // uncomment after placing your favicon in /public
     //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-    
+
     //logger setup
     app.use(logger('dev'));
 
@@ -33,11 +33,18 @@ module.exports = function () {
         resave: false,
         saveUninitialized: true
     }));
-    app.use(express.static(path.join(__dirname, 'public')));
- 
+    app.use('/', express.static(path.join(__dirname, '../public')));
+
+    //passport 설정
+    require('./passport_config.js')(passport);
+    app.use(passport.initialize());
+    app.use(passport.session());
+    app.use(flash());
+    
     //routing
-    require('../app/routes/index.route.js')(app);
-    require('../app/routes/login.route.js')(app);
- console.log("여기");
+    require('../app/routes/index.route.js')(app, passport);
+    require('../app/routes/login.route.js')(app, passport);
+    require('../app/routes/main.route.js')(app, passport);
+
     return app;
 }
